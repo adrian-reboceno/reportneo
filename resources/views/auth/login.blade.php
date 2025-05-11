@@ -1,47 +1,58 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.authentication')
+@section('title', 'Login')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+<div class="row">
+    <div class="col-lg-4 col-sm-12">
+        <form action="{{ route('login') }}" method="POST" class="card auth_form">
+            @csrf
+            <div class="header">
+                
+                <img class="logo" src="{{ URL::asset('assets/images/logo.svg')}}" alt="">
+                <h5>Log in</h5>
+            </div>
+            <div class="body">
+                <div class="input-group mb-3">
+                    {{-- <input type="text" class="form-control" placeholder="Username"> --}}
+                    <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="username" name="email" placeholder="Enter username">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="zmdi zmdi-account-circle"></i></span>
+                    </div>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="input-group mb-3">
+                    {{-- <input type="text" class="form-control" placeholder="Password"> --}}
+                    <input type="password" class="form-control password-input pe-5 @error('password') is-invalid @enderror" name="password" placeholder="Enter password" id="password-input" >
+                    <div class="input-group-append">                                
+                        <span class="input-group-text"><i class="zmdi zmdi-lock"></i></span>
+                    </div>   
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror                         
+                </div>
+                <div class="checkbox">
+                    <input id="remember_me" type="checkbox">
+                    <label for="remember_me">Remember Me</label>
+                </div>              
+                <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Sign In</button>                                 
+            </div>
+        </form>
+        <div class="copyright text-center">
+            &copy;
+            <script>document.write(new Date().getFullYear())</script>,
+            <span>Designed by <a href="https://www.talisis.com/" target="_blank">OnLine</a></span>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+    </div>
+    <div class="col-lg-8 col-sm-12">
+        <div class="card">
+            <img src="{{ URL::asset('assets/images/signin.svg')}}" alt="Sign In"/>
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</div>
+@endsection
