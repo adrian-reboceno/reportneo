@@ -1,5 +1,11 @@
-*.php linguist-language=PHP
-*.css linguist-vendored
-*.scss linguist-vendored
-*.js linguist-vendored
+* text=auto eol=lf
+
+
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
+/.github export-ignore
 CHANGELOG.md export-ignore
+.styleci.yml export-ignore
