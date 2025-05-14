@@ -1,6 +1,16 @@
-<script src="{{ URL::asset('https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js') }}" integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ=" crossorigin="anonymous"></script>
-<script src="{{ URL::asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js') }}" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="{{ URL::asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js') }}" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<script src="{{ URL::asset('assets/js/adminlte.js') }}"></script>
-@yield('script')
+<script src="{{ URL::asset('assets/js/pace.js') }}"></script>
+<script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ URL::asset('assets/libs/popper/popper.js') }}"></script>
+<script src="{{ URL::asset('assets/js/bootstrap.js') }}"></script>
+<script src="{{ URL::asset('assets/js/sidenav.js') }}"></script>
+<script src="{{ URL::asset('assets/js/layout-helpers.js') }}"></script>
+<script src="{{ URL::asset('assets/js/material-ripple.js') }}"></script>
+
+<script src="{{ URL::asset('assets/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+@yield('script-Libs')
+
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script src="{{ URL::asset('assets/js/analytics.js') }}"></script>
+@yield('script-page')
+
 @yield('script-bottom')

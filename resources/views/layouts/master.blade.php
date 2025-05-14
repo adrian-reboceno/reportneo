@@ -13,49 +13,38 @@
 @section('body')
 @include('layouts.body')
 @show
-    <!--begin::App Wrapper-->
-    <div class="app-wrapper">
-        @include('layouts.app-header')
-        @include('layouts.app-sidebar')
-        <!--begin::App Main-->
-        <main class="app-main">
-            <!--begin::App Content Header-->
-            <div class="app-content-header">
-                <!--begin::Container-->
-                <div class="container-fluid">
-                    <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-sm-6"><h3 class="mb-0">@yield('parentPageTitle')</h3></div>
-                        <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-end">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
-                        </ol>
+    @include('layouts.page-loader')
+    @include('sweetalert::alert')
+    <!-- [ Layout wrapper ] Start -->
+    <div class="layout-wrapper layout-2">
+        <!-- [ Layout inner ] Start -->
+        <div class="layout-inner">
+            @include('layouts.sidenav')
+            <!-- [ Layout container ] Start -->
+            <div class="layout-container">
+                @include('layouts.navbar-header')
+                <!-- [ Layout content ] Start -->
+                <div class="layout-content">
+                    <!-- [ content ] Start -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <h4 class="font-weight-bold py-3 mb-0">@yield('title-page') </h4>
+                        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">@yield('title-active')</li>
+                            </ol>
                         </div>
+                        @yield('content')
                     </div>
-                    <!--end::Row-->
+                    <!-- [ content ] End -->
                 </div>
-                <!--end::Container-->
+                <!-- [ Layout content ] End -->
+                @include('layouts.footer')
             </div>
-            <!--end::App Content Header-->
-            <!--begin::App Content-->
-            <div class="app-content">
-                <!--begin::Container-->
-                <div class="container-fluid">
-                    <!--begin::Row-->
-                    <div class="row">
-                        <div class="col-12">
-                            @yield('content')
-                        </div>
-                    </div>
-                    <!--end::Row-->
-                </div>
-                <!--end::Container-->
-            </div>
-            <!--end::App Content-->
-        </main>
-        <!--end::App Main-->
+            <!-- [ Layout container ] End -->
+        </div>
+        <!-- [ layout inner] End -->
     </div>
-    <!--end::App Wrapper-->
-    @include('layouts.footer')
+    <!-- [ Layout wrapper] End -->
     @include('layouts.vendor-scripts')

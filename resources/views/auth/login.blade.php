@@ -2,57 +2,68 @@
 @section('title')
 @lang('translation.signin')
 @endsection
+@section('css-after')
+<link rel="stylesheet" href="{{ URL::asset('assets/css/pages/authentication.css') }}">
+@endsection
 @section('content')
-<div class="login-box">
-    <div class="login-logo">
-        <b>Admin</b>LTE
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-            <form action="{{ route('login') }}" method="POST">
-                @csrf
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="username" name="email" placeholder="Enter username">
-                    <div class="input-group-text"><span class="bi bi-envelope"></span></div>
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+<!-- [ content ] Start -->
+<div class="authentication-wrapper authentication-1 px-4">
+    <div class="authentication-inner py-5">
+
+        <!-- [ Logo ] Start -->
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="ui-w-60">
+                <div class="w-100 position-relative">
+                    <img src="assets/img/logo-dark.png" alt="Brand Logo" class="img-fluid">
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control password-input pe-5 @error('password') is-invalid @enderror" name="password" placeholder="Enter password" id="password-input" >
-                    <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <!--begin::Row-->
-                <div class="row">
-                    <div class="col-8">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault"> Remember Me </label>
-                    </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">Sign In</button>
-                    </div>
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!--end::Row-->
-            </form>                        
+            </div>
         </div>
-        <!-- /.login-card-body -->
+        <!-- [ Logo ] End -->
+
+        <!-- [ Form ] Start -->
+        <form class="my-5" action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="username" name="email" placeholder="Enter username">
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                {{-- <div class="clearfix"></div> --}}
+            </div>
+            <div class="form-group">
+                <label class="form-label d-flex justify-content-between align-items-end">
+                    <span>Password</span>
+                    <a href="pages_authentication_password-reset.html" class="d-block small">Forgot password?</a>
+                </label>
+                <input type="password" class="form-control password-input pe-5 @error('password') is-invalid @enderror" name="password" placeholder="Enter password" id="password-input" >    
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror            
+                <div class="clearfix"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center m-0">
+                <label class="custom-control custom-checkbox m-0">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-label">Remember me</span>
+                </label>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+        </form>
+        <!-- [ Form ] End -->
+
+        <div class="text-center text-muted">
+            Don't have an account yet?
+            <a href="pages_authentication_register-v1.html">Sign Up</a>
+        </div>
+
     </div>
 </div>
+<!-- [ content ] End -->
 @endsection
 @section('script')
 

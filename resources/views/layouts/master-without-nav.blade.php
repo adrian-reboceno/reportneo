@@ -12,8 +12,10 @@
         @include('layouts.head-css')
     </head>
 
-    <body class="login-page bg-body-secondary">
-
+    <body >
+    <!-- [ Preloader ] Start -->
+    @include('layouts.page-loader')
+    <!-- [ Preloader ] End -->
     @yield('content')
 
     @include('layouts.vendor-scripts')

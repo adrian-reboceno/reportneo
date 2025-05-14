@@ -1,0 +1,74 @@
+@extends('layouts.master')
+@section('title', 'status list')
+@section('title-active', 'Catalog status')
+
+@section('css-after')
+
+@endsection
+
+
+@section('content')
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-auto col-sm-12">
+                {{-- <img src="assets/img/avatars/5.png" alt class="d-block ui-w-100 rounded-circle mb-3"> --}}
+            </div>
+            <div class="col">
+                <h4 class="font-weight-bold mb-4">{{$status->status_name}}</h4>
+                <div class="text-muted mb-4">
+                    {{--  Lorem ipsum dolor sit amet, nibh suavitate qualisque ut nam. Ad harum primis electram duo, porro principes ei has. --}}
+                </div>                
+                <strong>Create Date:</strong>
+                <span class="text-muted">{{$status->created_at}}</span>                        
+                <strong>Updated Date : </strong>
+                <span class="text-muted">{{$status->updated_at}}</span>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header -->
+
+<!-- end row -->
+<div class="row">
+    <div class="col">
+
+        <!-- Info -->
+        <div class="card mb-4">
+            <div class="card-body">
+
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">Summary:</div>
+                    <div class="col-md-9">
+                        {{$status->description}}
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">Create Date:</div>
+                    <div class="col-md-9">
+                        <a href="javascript:void(0)" class="text-dark">{{$status->created_at}}</a>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-3 text-muted">Updated date:</div>
+                    <div class="col-md-9">
+                        <a href="javascript:void(0)" class="text-dark">{{$status->updated_at}}</a>
+                    </div>
+                </div>                             
+            </div>
+            
+        </div>
+        <!-- / Info -->
+    </div>
+
+
+
+
+@endsection
+@section('script-page')
+
+@endsection
