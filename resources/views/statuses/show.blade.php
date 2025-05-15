@@ -23,8 +23,7 @@
                 <strong>Create Date:</strong>
                 <span class="text-muted">{{$status->created_at}}</span>                        
                 <strong>Updated Date : </strong>
-                <span class="text-muted">{{$status->updated_at}}</span>
-            
+                <span class="text-muted">{{$status->updated_at}}</span>            
             </div>
         </div>
     </div>
@@ -34,40 +33,32 @@
 <!-- end row -->
 <div class="row">
     <div class="col">
-
         <!-- Info -->
         <div class="card mb-4">
             <div class="card-body">
-
                 <div class="row mb-2">
                     <div class="col-md-3 text-muted">Summary:</div>
                     <div class="col-md-9">
                         {{$status->description}}
                     </div>
                 </div>
-
                 <div class="row mb-2">
                     <div class="col-md-3 text-muted">Create Date:</div>
                     <div class="col-md-9">
-                        <a href="javascript:void(0)" class="text-dark">{{$status->created_at}}</a>
+                        <span class="text-dark">{{$status->created_at}}</span>
                     </div>
                 </div>
-
                 <div class="row mb-2">
                     <div class="col-md-3 text-muted">Updated date:</div>
                     <div class="col-md-9">
-                        <a href="javascript:void(0)" class="text-dark">{{$status->updated_at}}</a>
+                        <span class="text-dark">{{$status->updated_at}}</span>
                     </div>
                 </div>                             
-            </div>
-            
+            </div>            
         </div>
         <!-- / Info -->
     </div>
-
-
-
-
+</div>
 @endsection
 @section('script-page')
 

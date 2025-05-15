@@ -21,7 +21,9 @@
                     <div class="col-sm-6">
                     </div>
                     <div class="col-sm-6 text-right">
-                        <a class="btn btn-success btn-sm mb-3 btn-round" href="{{route('users.create')}}"><i class="feather icon-plus"></i> Add User</a>
+                        @can('user-create')      
+                            <a class="btn btn-success btn-sm mb-3 btn-round" href="{{route('users.create')}}"><i class="feather icon-plus"></i> Add User</a>
+                        @endcan
                     </div>
                 </div>
                 <div >
@@ -53,17 +55,22 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->created_at}}</td>   
                                 <td>                               
-                                    {{-- @foreach ($user->roles as $role)                                       
-                                        <span class="badge bg-success">{{ $role->name }}</span>
-                                    @endforeach    --}}                         
+                                    @foreach ($user->roles as $role)                                       
+                                        <span class="badge badge-success">{{ $role->name }}</span>
+                                    @endforeach                            
                                 </td>                                                       
-                                <td><span class="badge  bg-{{$user->status ? $user->status->status_color : ''}} ">{{$user->status ? $user->status->status_name : ''}}</span> </td>                      
+                                <td><span class="badge  badge-{{$user->status ? $user->status->status_color : ''}} ">{{$user->status ? $user->status->status_name : ''}}</span> </td>                      
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Acction</button>
                                         <div class="dropdown-menu">
-                                            <li><a href="{{ route('users.show', $user->id)}}" class="dropdown-item"><i class="bi bi-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                            @can('user-show') 
+                                                <li><a href="{{ route('users.show', $user->id)}}" class="dropdown-item"><i class="bi bi-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                            @endcan
+                                            @can('user-edit') 
                                             <li><a href="{{ route('users.edit', $user->id)}}" class="dropdown-item edit-item-btn"><i class="bi bi-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
+                                            @endcan
+                                            @can('user-delete') 
                                             <li>                                               
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                     @csrf
@@ -71,6 +78,7 @@
                                                     <button type="submit" class="btn btn-link link-underline link-underline-opacity-0 text-danger"><i class="bi bi-trash-fill align-bottom me-2 text-muted"></i> Delete</button>
                                                 </form>    
                                             </li>
+                                            @endcan
                                         </div>
                                     </div>                                                  
                                 </td>

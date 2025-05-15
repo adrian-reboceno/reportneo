@@ -3,11 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Status;
 
-class StatusController extends Controller
+class StatusController extends Controller  
 {
+    /** 
+     * middleware to check if the user is authenticated
+     * and has the role of 'admin' or 'super-admin'
+     */
+    function __construct()
+    {
+        $this->middleware('permission:status-list|status-create|status-edit|status-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:status-create', ['only' => ['create','store']]);
+        $this->middleware('permission:status-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:status-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */

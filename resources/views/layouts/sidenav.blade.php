@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="sidenav-item">
-                    <a href="forms_input-groups.html" class="sidenav-link">
+                    <a href="{{route('roles.index')}}" class="sidenav-link">
                         <div>Role</div>
                     </a>
                 </li>

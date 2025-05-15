@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', 'status list')
-@section('title-active', 'Catalog status')
+@section('title', 'roles list')
+@section('title-active', 'Manager roles')
 
 @section('css-after')
 <link href="{{ URL::asset('https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
@@ -14,15 +14,15 @@
     <div class="col-md-12">
         <div class="card">            
             <div class="card-header">
-                <h5>Status List </h5>
+                <h5>Roles List </h5>
             </div>
             <div class="card-body">
                 <div class="row align-items-center m-l-0">
                     <div class="col-sm-6">
                     </div>
                     <div class="col-sm-6 text-right">
-                        @can('status-create')  
-                            <a class="btn btn-success btn-sm mb-3 btn-round" href="{{route('status.create')}}"><i class="feather icon-plus"></i> Add status</a>
+                        @can('user-create')   
+                            <a class="btn btn-success btn-sm mb-3 btn-round" href="{{route('roles.create')}}"><i class="feather icon-plus"></i> Add rol</a>
                         @endcan
                     </div>
                 </div>
@@ -31,39 +31,35 @@
                         <thead>
                             <tr>                                
                                 <th>ID</th>                           
-                                <th>Status</th>
-                                <th>description</th>
-                                <th>Status color</th>                                
+                                <th>Role name</th>                           
                                 <th>Create Date</th>   
                                 <th>Update Date</th>                                                                  
                                 <th>Action</th>
                             </tr>
                         </thead>                       
                         <tbody>
-                            @foreach ($statuses as $status )                                                                          
+                            @foreach ($roles as $role )                                                                          
                             <tr>
-                                <td>{{$status->id}}</td>                                                   
-                                <td>{{$status->status_name}}</td> 
-                                <td>{{$status->description}}</td>                            
-                                <td><div class="bg-{{$status->status_color}} p-2"></div></td>                               
-                                <td>{{$status->created_at}}</td>   
-                                <td>{{$status->updated_at}}</td>                       
+                                <td>{{$role->id}}</td>                                                   
+                                <td>{{$role->name}}</td>                                 
+                                <td>{{$role->created_at}}</td>   
+                                <td>{{$role->updated_at}}</td>                         
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Acction</button>
                                         <div class="dropdown-menu">
-                                            @can('status-create')  
-                                                <li><a href="{{ route('status.show', $status->id)}}" class="dropdown-item"><i class="bi bi-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                            @can('user-create')   
+                                                <li><a href="{{route('roles.show', $role->id)}}" class="dropdown-item"><i class="sidenav-icon feather icon-eye align-bottom me-2 text-muted"></i> View</a></li>
                                             @endcan
-                                            @can('status-create')  
-                                                <li><a href="{{ route('status.edit', $status->id)}}" class="dropdown-item edit-item-btn"><i class="bi bi-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
+                                            @can('user-create')   
+                                                <li><a href="{{route('roles.edit', $role->id)}}" class="dropdown-item edit-item-btn"><i class="sidenav-icon feather icon-edit-2 align-bottom me-2 text-muted"></i> Edit</a></li>
                                             @endcan
-                                            @can('status-create')  
+                                            @can('user-create')                                              
                                                 <li>                                               
-                                                    <form action="{{ route('status.destroy', $status->id) }}" method="POST">
+                                                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-link link-underline link-underline-opacity-0 text-danger"><i class="bi bi-trash-fill align-bottom me-2 text-muted"></i> Delete</button>
+                                                        <button type="submit" class="btn btn-link link-underline link-underline-opacity-0 text-danger"><i class="sidenav-icon feather icon-trash-2 align-bottom me-2 text-muted"></i> Delete</button>
                                                     </form>    
                                                 </li>
                                             @endcan
