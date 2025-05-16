@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mb-3">
-                                <label for="neo_tenant_id" class="form-label">Status</label>                                                                        
+                                <label for="neo_tenant_id" class="form-label">Neo Tenant</label>                                                                        
                                 <select name="neo_tenant_id" id="neo_tenant_id" class="custom-select form-control" s style="width: 100%" data-allow-clear="true">
                                     @foreach ( $neoTenants as $neoTenant)
                                         <option value="{{ $neoTenant->id }}" >{{ $neoTenant->school_name }}</option>

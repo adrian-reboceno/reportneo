@@ -70,10 +70,15 @@
                         <div>Neo Api</div>
                     </a>
                 </li>
+                <li class="sidenav-item">
+                    <a href="{{route('neoorganizations.index')}}" class="sidenav-link">
+                        <div>Neo organizations</div>
+                    </a>
+                </li>
             </ul>
         </li>
         <!--  Icons -->
-        {{--  <li class="sidenav-divider mb-1"></li>  --}}
+        {{--  <li class="sidenav-divider mb-1"></li>   --}}
         
     </ul>
 </div>
