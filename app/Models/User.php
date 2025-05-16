@@ -54,7 +54,6 @@ class User extends Authenticatable
 
     public function status(): HasOne
     {
-        return $this->hasOne(Status::class, 'id', 'status_id');
-        
+        return $this->hasOne(Status::class, 'id', 'status_id');        
     }
 }

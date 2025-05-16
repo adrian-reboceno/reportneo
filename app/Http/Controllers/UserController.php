@@ -59,15 +59,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //dd($request->all());
+        //        
         $request->validate([
             'name' => 'required|string|max:255',
             'paternal_surname' => 'required|string|max:255',
             'maternal_surname' => 'nullable|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required','min:8', 'confirmed', Rules\Password::defaults()],
-            'avatar' => 'nullable|image|max:5120'                   
+            'avatar' => 'nullable|image|max:5120',   
+            'status_id' => 'required|exists:statuses,id'        
         ]);
         if($request->hasFile('avatar')){            
             $uploadFile = $this->uploadFile($request);         

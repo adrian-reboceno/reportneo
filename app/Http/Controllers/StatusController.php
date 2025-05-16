@@ -57,13 +57,12 @@ class StatusController extends Controller
             'description' => $request->description,
             'status_color' => $request->status_color,
         ]);
-        Alert::toast('Status updated successfully!', 'success')
+        Alert::toast('Create status create successfully!', 'success')
         ->position('top-right')
         ->autoClose(3000)
         ->timerProgressBar();
         // Redirect to the index page
-        return redirect()->route('status.index');
-   
+        return redirect()->route('status.index');   
     }
 
     /**

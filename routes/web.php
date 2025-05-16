@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\NeoTenantController;
+use App\Http\Controllers\NeoApiController; 
 
 
 
@@ -33,6 +35,10 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('catalog/status', StatusController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('cypherlearning/neotenants', NeoTenantController::class);
+    Route::resource('cypherlearning/tokenapi', NeoApiController::class);
 });
 require __DIR__.'/auth.php';
 

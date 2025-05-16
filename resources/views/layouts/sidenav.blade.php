@@ -54,8 +54,26 @@
                 </li>
             </ul>
         </li>
+        <li class="sidenav-item">
+            <a href="javascript:" class="sidenav-link sidenav-toggle">
+                <i class="sidenav-icon feather icon-users"></i>
+                <div>Cypherlearning</div>
+            </a>
+            <ul class="sidenav-menu">
+                <li class="sidenav-item">
+                    <a href="{{route('neotenants.index')}}" class="sidenav-link">
+                        <div>Neo Tenant</div>
+                    </a>
+                </li>
+               {{--  <li class="sidenav-item">
+                    <a href="{{route('roles.index')}}" class="sidenav-link">
+                        <div>Role</div>
+                    </a>
+                </li> --}}
+            </ul>
+        </li>
         <!--  Icons -->
-        {{--  <li class="sidenav-divider mb-1"></li> --}}
+        {{--  <li class="sidenav-divider mb-1"></li>  --}}
         
     </ul>
 </div>
