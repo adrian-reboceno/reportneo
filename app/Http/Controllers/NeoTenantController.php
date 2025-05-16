@@ -9,6 +9,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class NeoTenantController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:neotenant-list|user-create|neotenant-edit|neotenant-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:neotenant-create', ['only' => ['create','store']]);
+        $this->middleware('permission:neotenant-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:neotenant-delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */

@@ -20,9 +20,9 @@
                     <div class="col-sm-6">
                     </div>
                     <div class="col-sm-6 text-right">
-                        {{-- @can('status-create')  --}} 
+                        @can('neotenant-create')  
                             <a class="btn btn-success btn-sm mb-3 btn-round" href="{{route('neotenants.create')}}"><i class="feather icon-plus"></i> Add Neo Tenant</a>
-                       {{--  @endcan --}}
+                        @endcan
                     </div>
                 </div>
                 <div >
@@ -53,13 +53,13 @@
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Acction</button>
                                         <div class="dropdown-menu">
-                                          {{--   @can('status-create')  --}} 
+                                            @can('neotenant-show')  
                                                 <li><a href="{{ route('neotenants.show', $neotenant->id)}}" class="dropdown-item"><i class="bi bi-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
-                                           {{--  @endcan
-                                            @can('status-create')  --}} 
+                                            @endcan
+                                            @can('neotenant-edit')  
                                                 <li><a href="{{ route('neotenants.edit', $neotenant->id)}}" class="dropdown-item edit-item-btn"><i class="bi bi-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
-                                           {{--  @endcan
-                                            @can('status-create')   --}}
+                                            @endcan
+                                            @can('neotenant-delete')  
                                                 <li>                                               
                                                     <form action="{{ route('neotenants.destroy', $neotenant->id) }}" method="POST">
                                                         @csrf
@@ -67,7 +67,7 @@
                                                         <button type="submit" class="btn btn-link link-underline link-underline-opacity-0 text-danger"><i class="bi bi-trash-fill align-bottom me-2 text-muted"></i> Delete</button>
                                                     </form>    
                                                 </li>
-                                           {{--  @endcan --}}
+                                            @endcan
                                         </div>
                                     </div>                                                  
                                 </td>

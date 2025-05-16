@@ -65,11 +65,11 @@
                         <div>Neo Tenant</div>
                     </a>
                 </li>
-               {{--  <li class="sidenav-item">
-                    <a href="{{route('roles.index')}}" class="sidenav-link">
-                        <div>Role</div>
+                <li class="sidenav-item">
+                    <a href="{{route('neoapis.index')}}" class="sidenav-link">
+                        <div>Neo Api</div>
                     </a>
-                </li> --}}
+                </li>
             </ul>
         </li>
         <!--  Icons -->

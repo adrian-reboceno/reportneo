@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('cypherlearning/neotenants', NeoTenantController::class);
-    Route::resource('cypherlearning/tokenapi', NeoApiController::class);
+    Route::resource('cypherlearning/neoapis', NeoApiController::class);
 });
 require __DIR__.'/auth.php';
 
