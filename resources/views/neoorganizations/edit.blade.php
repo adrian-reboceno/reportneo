@@ -55,6 +55,35 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="parent_id" class="form-label">Parent Organization</label>                                                                        
+                                <select name="parent_id" id="parent_id" class="custom-select form-control" s style="width: 100%" data-allow-clear="true">
+                                    <option value="0">Select</option>
+                                    @foreach ( $neoOrganizations as $data)                                        
+                                        <option value="{{ $data->id }}" {{$data->lms_organization ==  $neoOrganization->parent_id ? 'selected' : ''}}>{{ $data->name_organization }}</option>
+                                    @endforeach 
+                                </select>
+                                @error('parent_id')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>  
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="type_operation" class="form-label">Type </label>                                                                        
+                                <select name="type_operation" id="type_operation" class="custom-select form-control" s style="width: 100%" data-allow-clear="true">
+                                    <option value="N/A" {{$neoOrganization->type ==  'N/A' ? 'selected' : ''}}>N/A</option>
+                                    <option value="Operacion" {{$neoOrganization->type ==  'Operacion' ? 'selected' : ''}}>Operacion</option>
+                                    <option value="SEP" {{$neoOrganization->type ==  'SEP' ? 'selected' : ''}}>SEP</option>
+                                    <option value="Master" {{$neoOrganization->type ==  'Master' ? 'selected' : ''}}>Master</option>
+                                    <option value="Proveedor" {{$neoOrganization->type ==  'Proveedor' ? 'selected' : ''}}>Proveedor</option>
+                                </select>
+                                @error('type_operation')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>  
                         <!--end col-->                                                              
                     </div>
                 </div>                                      

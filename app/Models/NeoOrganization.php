@@ -3,11 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class NeoOrganization extends Model
 {
     //
-     protected $fillable = [
+    protected $fillable = [
+        'parent_id',
+        'type',
         'neo_tenant_id',
         'lms_organization',
         'name_organization',
@@ -17,7 +21,27 @@ class NeoOrganization extends Model
     {
         return $this->belongsTo(NeoTenant::class);
     }
+    /**
+     * Organización padre.
+     */
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(NeoOrganization::class,'parent_id','lms_organization');
+    }
 
-   
-    
+    /**
+     * Organizaciones hijas.
+     */
+    public function children(): HasMany
+    {
+        return $this->hasMany(NeoOrganization::class, 'parent_id');
+    }
+
+    /**
+     * Acceso al LMS asociado (si necesitas modelo relacionado).
+     */
+    /*  public function lms()
+    {
+        return $this->belongsTo(Lms::class, 'lms_organization');
+    } */ 
 }

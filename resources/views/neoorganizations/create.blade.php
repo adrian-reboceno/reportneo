@@ -54,6 +54,35 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="parent_id" class="form-label">Parent Organization</label>                                                                        
+                                <select name="parent_id" id="parent_id" class="custom-select form-control" s style="width: 100%" data-allow-clear="true">
+                                    <option value="0">Select</option>
+                                    @foreach ( $neoOrganizations as $neoOrganization)                                        
+                                        <option value="{{ $neoOrganization->id }}" >{{ $neoOrganization->name_organization }}</option>
+                                    @endforeach 
+                                </select>
+                                @error('parent_id')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>  
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label for="type_operation" class="form-label">Type </label>                                                                        
+                                <select name="type_operation" id="type_operation" class="custom-select form-control" s style="width: 100%" data-allow-clear="true">
+                                    <option value="N/A">N/A</option>
+                                    <option value="Operacion">Operacion</option>
+                                    <option value="SEP">SEP</option>
+                                    <option value="Master">Master</option>
+                                    <option value="Proveedor">Proveedor</option>
+                                </select>
+                                @error('type_operation')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>  
                         <!--end col-->                                                              
                     </div>
                 </div>                                      

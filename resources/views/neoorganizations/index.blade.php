@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">            
@@ -32,19 +33,23 @@
                                 <th>ID</th>        
                                 <th>Lm Organization</th>                   
                                 <th>name Organization</th>
-                                <th>Tenant Neo</th>                                                          
+                                <th>Parent Organization</th>
+                                <th>Tenant Neo</th>  
+                                <th>Type</th>                                                          
                                 <th>Create Date</th>   
                                 <th>Update Date</th>                                                                  
                                 <th>Action</th>
                             </tr>
                         </thead>                       
                         <tbody>
-                            @foreach ($neoOrganizations as $neoOrganization )                                                                          
+                            @foreach ($neoOrganizations as $neoOrganization )                                                                                                                      
                             <tr>
                                 <td>{{$neoOrganization->id}}</td> 
                                 <td>{{$neoOrganization->lms_organization}}</td>                                                   
                                 <td>{{$neoOrganization->name_organization}}</td> 
-                                <td>{{$neoOrganization->neoTenant->school_name}}</td>                                                                                   
+                                <td>{{$neoOrganization->parent? $neoOrganization->parent->name_organization : ''}}</td> 
+                                <td>{{$neoOrganization->neoTenant->school_name}}</td> 
+                                <td>{{$neoOrganization->type}}</td>                                                                                   
                                 <td>{{$neoOrganization->created_at}}</td>   
                                 <td>{{$neoOrganization->updated_at}}</td>                       
                                 <td>

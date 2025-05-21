@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\NeoTenantController;
 use App\Http\Controllers\NeoApiController; 
 use App\Http\Controllers\NeoOrganizationController; 
+use App\Http\Controllers\SyncNeoOrganizationController;
 
 
 
@@ -41,6 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('cypherlearning/neotenants', NeoTenantController::class);
     Route::resource('cypherlearning/neoapis', NeoApiController::class);
     Route::resource('cypherlearning/neoorganizations', NeoOrganizationController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('neosync/syncorganizations', SyncNeoOrganizationController::class);
 });
 require __DIR__.'/auth.php';
 
