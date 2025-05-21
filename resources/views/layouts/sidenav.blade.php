@@ -71,6 +71,11 @@
                     </a>
                 </li>
                 <li class="sidenav-item">
+                    <a href="{{route('neostatuses.index')}}" class="sidenav-link">
+                        <div>Neo Status</div>
+                    </a>
+                </li>                
+                <li class="sidenav-item">
                     <a href="{{route('neoorganizations.index')}}" class="sidenav-link">
                         <div>Neo organizations</div>
                     </a>

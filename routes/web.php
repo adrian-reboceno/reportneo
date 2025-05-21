@@ -9,6 +9,8 @@ use App\Http\Controllers\NeoTenantController;
 use App\Http\Controllers\NeoApiController; 
 use App\Http\Controllers\NeoOrganizationController; 
 use App\Http\Controllers\SyncNeoOrganizationController;
+use App\Http\Controllers\NeoStatusController;
+
 
 
 
@@ -42,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('cypherlearning/neotenants', NeoTenantController::class);
     Route::resource('cypherlearning/neoapis', NeoApiController::class);
     Route::resource('cypherlearning/neoorganizations', NeoOrganizationController::class);
+    Route::resource('cypherlearning/neostatuses', NeoStatusController::class);
 });
 Route::middleware('auth')->group(function () {
     Route::resource('neosync/syncorganizations', SyncNeoOrganizationController::class);
