@@ -56,7 +56,7 @@
         </li>
         <li class="sidenav-item">
             <a href="javascript:" class="sidenav-link sidenav-toggle">
-                <i class="sidenav-icon feather icon-users"></i>
+                <i class="sidenav-icon feather icon-layers"></i>
                 <div>Cypherlearning</div>
             </a>
             <ul class="sidenav-menu">
@@ -77,8 +77,32 @@
                 </li>
             </ul>
         </li>
+        <li class="sidenav-item">
+            <a href="javascript:" class="sidenav-link sidenav-toggle">
+                <i class="sidenav-icon feather icon-activity "></i>
+                <div>Neo Sync</div>
+            </a>
+            <ul class="sidenav-menu">
+                <li class="sidenav-item">
+                    <a href="{{route('syncorganizations.create')}}" class="sidenav-link">
+                        <div>Organizations</div>
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a href="{{route('neotenants.index')}}" class="sidenav-link">
+                        <div>Users</div>
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a href="{{route('neoapis.index')}}" class="sidenav-link">
+                        <div>Class</div>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
         <!--  Icons -->
-        {{--  <li class="sidenav-divider mb-1"></li>   --}}
+        {{--  <li class="sidenav-divider mb-1"></li>   feather icon-activity --}}
         
     </ul>
 </div>
