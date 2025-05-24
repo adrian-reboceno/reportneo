@@ -24,8 +24,7 @@ class SyncNeoOrganizationController extends Controller
      */
     public function create()
     {
-        //
-      
+        //      
         $neoTenants = NeoTenant::all();             
         return view('syncneo.organizations.create', compact('neoTenants'));
     }
@@ -41,19 +40,15 @@ class SyncNeoOrganizationController extends Controller
             'neo_tenant_id' => 'required|exists:neo_tenants,id',
         ]);
         $tenant = NeoTenant::findOrFail($request->neo_tenant_id);
-      /*  $NeoApi =  NeoApi::where('neo_tenant_id', $request->neo_tenant_id)->get();
- */
-       
-    $api = new NeoApiV3([
-        'host' => $tenant->api->hostapi ,
-        'api_key' => $tenant->api->apikey,
-        'api_version' => $tenant->api->version ?? 'v3',
-        'use_ssl' =>  true,
-        'debug' => true,
-    ]);
+        $api = new NeoApiV3([
+            'host' => $tenant->api->hostapi ,
+            'api_key' => $tenant->api->apikey,
+            'api_version' => $tenant->api->version ?? 'v3',
+            'use_ssl' =>  true,
+            'debug' => true,
+        ]);
 
-  /*   dd( $api ); */
-    $limit = 100;
+        $limit = 100;
         $offset = 0;
         $totalSynced = 0;
 

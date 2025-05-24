@@ -13,7 +13,7 @@
     <div class="nav-tabs-top">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#user-edit-account">Neo Api</a>
+                <a class="nav-link active" data-toggle="tab" href="#user-edit-account">Neo Sync</a>
             </li>
             
         </ul>

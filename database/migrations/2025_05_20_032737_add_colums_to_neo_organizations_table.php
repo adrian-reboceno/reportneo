@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('neo_organizations', function (Blueprint $table) {
             //
-            $table->enum('type', ['operacion', 'SEP','master', 'proveedor','N/A'])->default('operacion')->after('parent_id');
+            $table->enum('type', ['operacion', 'SEP','master', 'proveedor','N/A','Capacitacion'])->default('operacion')->after('parent_id');
         });
     }
 

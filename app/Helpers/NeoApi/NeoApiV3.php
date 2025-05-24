@@ -49,7 +49,7 @@ class NeoApiV3
                 implode("&", $parts);
 
         if ($this->debug) {
-            echo $path;
+            $path;
         }
 
         $result = file_get_contents($path);
@@ -78,5 +78,9 @@ class NeoApiV3
     public function get_all_organization(array $constraints)
     {
         return $this->get("organizations", $constraints);
+    }
+    public function get_users_by_organization(int $id, array $constraints)
+    {
+        return $this->get("organizations/{$id}/users", $constraints);
     }
 }

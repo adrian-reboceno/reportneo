@@ -8,7 +8,8 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ URL::asset('build/img/AdminLTELogo.png')}}">
-        @include('layouts.head-css')            
+        @include('layouts.head-css') 
+       {{--  @livewireStyles     --}}      
     </head>
 @section('body')
 @include('layouts.body')
@@ -47,6 +48,7 @@
         <!-- [ layout inner] End -->
     </div>
     <!-- [ Layout wrapper] End -->   
+    {{-- @livewireScripts --}}
 </body>
 </html>
     @include('layouts.vendor-scripts')

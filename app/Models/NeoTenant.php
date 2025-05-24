@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class NeoTenant extends Model
 {
@@ -24,5 +25,9 @@ class NeoTenant extends Model
     public function api()
     {
         return $this->hasOne(NeoApi::class);
+    }
+    public function organizations(): HasMany
+    {
+        return $this->hasMany(NeoOrganization::class);
     }
 }

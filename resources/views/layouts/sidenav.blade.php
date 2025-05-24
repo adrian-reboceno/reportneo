@@ -74,7 +74,12 @@
                     <a href="{{route('neostatuses.index')}}" class="sidenav-link">
                         <div>Neo Status</div>
                     </a>
-                </li>                
+                </li>  
+                <li class="sidenav-item">
+                    <a href="{{route('neoprofiles.index')}}" class="sidenav-link">
+                        <div>Neo Profiles</div>
+                    </a>
+                </li>                               
                 <li class="sidenav-item">
                     <a href="{{route('neoorganizations.index')}}" class="sidenav-link">
                         <div>Neo organizations</div>
@@ -94,7 +99,7 @@
                     </a>
                 </li>
                 <li class="sidenav-item">
-                    <a href="{{route('neotenants.index')}}" class="sidenav-link">
+                    <a href="{{route('syncusers.create')}}" class="sidenav-link">
                         <div>Users</div>
                     </a>
                 </li>

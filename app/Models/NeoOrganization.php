@@ -36,6 +36,7 @@ class NeoOrganization extends Model
     {
         return $this->hasMany(NeoOrganization::class, 'parent_id');
     }
+    
 
     /**
      * Acceso al LMS asociado (si necesitas modelo relacionado).
