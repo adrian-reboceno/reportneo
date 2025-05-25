@@ -48,7 +48,7 @@ class SyncNeoUserController extends Controller
         $tenant = NeoTenant::findOrFail($request->neo_tenant_id);
         $NeoOrganization = NeoOrganization::findOrFail($request->organization_id);  
         SyncUsersByOrganizationJob::dispatch($request->neo_tenant_id, $NeoOrganization->lms_organization, Auth::user()->id);
-        Alert::toast('Sincronización iniciada. Te notificaremos al finalizar.!', 'success')
+        Alert::toast('Sincronización de usuarios iniciada. Te notificaremos al finalizar.!', 'success')
         ->position('top-right')
         ->autoClose(3000)
         ->timerProgressBar();

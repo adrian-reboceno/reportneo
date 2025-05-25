@@ -13,16 +13,18 @@ class SyncCompletedNotification extends Notification
     public $tenantName;
     public $organizationName;
     public $totalSynced;
+    public $typesync;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($tenantName, $organizationName, $totalSynced)
+    public function __construct($tenantName, $organizationName, $totalSynced, $typesync)
     {
         //
         $this->tenantName = $tenantName;
         $this->organizationName = $organizationName;
         $this->totalSynced = $totalSynced;
+        $this->typesync = $typesync;
     }
 
     /**
@@ -55,7 +57,7 @@ class SyncCompletedNotification extends Notification
     {
         return [
             //
-            'title' => "Sincronización de usuarios completada",
+            'title' => "Sincronización de {$this->typesync} completada",
             'message' => "✔️ Sincronización completada para '{$this->organizationName}' en '{$this->tenantName}' total de usuarios '{$this->totalSynced}'."
         ];
     }

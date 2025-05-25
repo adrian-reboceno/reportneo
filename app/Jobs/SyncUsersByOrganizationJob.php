@@ -138,7 +138,8 @@ class SyncUsersByOrganizationJob implements ShouldQueue
             $user->notify(new SyncCompletedNotification(
                 $tenant->school_name,
                 $organization->name_organization,
-                $totalSynced
+                $totalSynced,
+                'users'
             ));
         }
         

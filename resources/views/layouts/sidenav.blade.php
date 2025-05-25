@@ -104,7 +104,7 @@
                     </a>
                 </li>
                 <li class="sidenav-item">
-                    <a href="{{route('neoapis.index')}}" class="sidenav-link">
+                    <a href="{{route('syncclasses.create')}}" class="sidenav-link">
                         <div>Class</div>
                     </a>
                 </li>
