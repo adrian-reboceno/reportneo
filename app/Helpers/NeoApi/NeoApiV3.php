@@ -83,4 +83,8 @@ class NeoApiV3
     {
         return $this->get("organizations/{$id}/users", $constraints);
     }
+    public function get_classes_by_organization(int $id, array $constraints)
+    {
+        return $this->get("organizations/{$id}/classes", $constraints);
+    }
 }
