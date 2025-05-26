@@ -23,16 +23,18 @@ class SyncUsersByOrganizationJob implements ShouldQueue
     use Queueable;
     public $tenantId;
     public $lmsOrganization;
+    public $profileId;
     public $userId;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(int $tenantId, int $lmsOrganization, int $userId = null)
+    public function __construct(int $tenantId, int $lmsOrganization, int $profileId, int $userId = null)
     {
         $this->tenantId = $tenantId;
         $this->lmsOrganization = $lmsOrganization;
         $this->userId = $userId;
+        $this->profileId = $profileId;
     }   
 
     /**
@@ -56,14 +58,21 @@ class SyncUsersByOrganizationJob implements ShouldQueue
         ]);
         $limit = 100;
         $offset = 0;
-        $totalSynced = 0;
-        $filter = '{"roles":"Student"}';
+        $totalSynced = 0;       
         $organization  = NeoOrganization::where('lms_organization',$this->lmsOrganization)->first();
 
         if (!$organization) {
             Log::warning("SyncUsersByOrganizationJob: Organización {$this->lmsOrganization} no encontrada para tenant {$tenant->id}");
             return;
         }
+
+        $profile = NeoProfile::find($this->profileId);
+        if (!$profile) {
+            Log::warning("SyncUsersByOrganizationJob: Perfil {$this->profileId} no encontrado para tenant {$tenant->id}");
+            return;
+        }
+        $role= $profile->profile_name;       
+        $filter = '{"roles":"'.$role.'"}';
         $callCount = 0;
         Log::info("⏳ Iniciando sync para org {$organization->name_organization} ({$organization->lms_organization})");
         try {
@@ -88,7 +97,7 @@ class SyncUsersByOrganizationJob implements ShouldQueue
                             'first_name' => $user->first_name,
                             'last_name' => $user->last_name,
                             'email' => $user->email,
-                            'educational_program' => $user->custom_fields->ProgramaEducativo,
+                            'educational_program' => data_get($user, 'custom_fields.ProgramaEducativo'),
                             'studentID' => $user->studentID,
                             'teacherID' => $user->teacherID,
                             'joined_at' => $user->joined_at,
@@ -99,10 +108,15 @@ class SyncUsersByOrganizationJob implements ShouldQueue
                         ]
                     );
 
+                    if (!$person) {
+                        Log::error("Error al crear o actualizar persona para usuario {$user->first_name} {$user->last_name} ({$user->email})");
+                        continue;
+                    }
+
                     $NeoPersonProfile = NeoPersonProfile::updateOrCreate(
-                        ['neo_person_id' => $person->id, 'neo_profile_id' => 5],
+                        ['neo_person_id' => $person->id, 'neo_profile_id' => $profile->id],
                         [
-                            'neo_profile_id' => 5,
+                            'neo_profile_id' => $profile->id,
                             'neo_person_id' => $person->id,
                         ]
                     );
@@ -114,7 +128,7 @@ class SyncUsersByOrganizationJob implements ShouldQueue
                         ]
                     );
 
-                    Log::info("Insertando usuario {$user->first_name} {$user->last_name} ({$user->email}) en {$organization->name_organization} ({$organization->lms_organization})");
+                    Log::info("Insertando usuario {$user->first_name} {$user->last_name} ({$user->email}) en {$organization->name_organization} ({$organization->lms_organization}) role {$profile->id}");
                 }
                 $callCount++;
                 if ($callCount % 120 === 0) {
@@ -139,7 +153,7 @@ class SyncUsersByOrganizationJob implements ShouldQueue
                 $tenant->school_name,
                 $organization->name_organization,
                 $totalSynced,
-                'users'
+                $role
             ));
         }
         

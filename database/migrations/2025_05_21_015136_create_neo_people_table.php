@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('studentID')->nullable(true);
             $table->string('teacherID')->nullable(true);
-            $table->string('email');
+            $table->string('email')->nullable(true);
             $table->string('educational_program')->nullable(true);
             $table->string('joined_at');
             $table->string('first_login_at');

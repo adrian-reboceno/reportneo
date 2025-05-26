@@ -24,4 +24,12 @@ class NeoPersonProfile extends Model
     {
         return $this->belongsTo(NeoProfile::class);
     }
+    public function neoPersonOrganization()
+    {
+        return $this->hasMany(NeoPersonOrganization::class);
+    }
+    public function neoPersonProfile()
+    {
+        return $this->hasMany(NeoPersonProfile::class);
+    }
 }

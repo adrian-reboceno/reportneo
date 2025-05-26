@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\NeoOrganization; 
 use App\Models\NeoTenant; 
 use App\Models\NeoApi;
+use App\Models\NeoProfile;
 use App\Helpers\NeoApi\NeoApiV3;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Jobs\SyncUsersByOrganizationJob;
@@ -29,8 +30,9 @@ class SyncNeoUserController extends Controller
     public function create()
     {
         //
-        $neoTenants = NeoTenant::all();             
-        return view('syncneo.users.create', compact('neoTenants'));
+        $neoTenants = NeoTenant::all();  
+        $neoProfiles = NeoProfile::all();           
+        return view('syncneo.users.create', compact('neoTenants','neoProfiles'));
 
     }
 
@@ -40,14 +42,15 @@ class SyncNeoUserController extends Controller
     public function store(Request $request)
     {
         //
-        /* dd($request->all()); */
+       /*  dd($request->all()); */
         $request->validate([
             'neo_tenant_id' => 'required|exists:neo_tenants,id',
             'organization_id' => 'required|exists:neo_organizations,id',
+            'profile_id' => 'required|exists:neo_profiles,id',
         ]);
         $tenant = NeoTenant::findOrFail($request->neo_tenant_id);
         $NeoOrganization = NeoOrganization::findOrFail($request->organization_id);  
-        SyncUsersByOrganizationJob::dispatch($request->neo_tenant_id, $NeoOrganization->lms_organization, Auth::user()->id);
+        SyncUsersByOrganizationJob::dispatch($request->neo_tenant_id, $NeoOrganization->lms_organization, $request->profile_id, Auth::user()->id);
         Alert::toast('Sincronización de usuarios iniciada. Te notificaremos al finalizar.!', 'success')
         ->position('top-right')
         ->autoClose(3000)

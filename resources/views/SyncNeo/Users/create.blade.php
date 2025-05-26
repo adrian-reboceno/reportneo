@@ -45,7 +45,21 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>                                                                             
+                        </div>    
+                        <div class="col-lg-3">
+                            <div class="mb-3">
+                                <label for="profile_id" class="form-label">Profile Neo</label>                                                                        
+                                <select name="profile_id" id="profile_id" class="custom-select form-control" s style="width: 100%" data-allow-clear="true">                                  
+                                    <option value="">-- Selecciona un profile --</option>
+                                    @foreach ( $neoProfiles as $neoProfile)
+                                        <option value="{{ $neoProfile->id }}" >{{ $neoProfile->profile_name }}</option>
+                                    @endforeach 
+                                </select>
+                                @error('role_id')                                           
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>                                                                                     
                         <!--end col-->                                                              
                     </div>
                 </div>                                      
