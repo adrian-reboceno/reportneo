@@ -108,11 +108,16 @@
                         <div>Class</div>
                     </a>
                 </li>
+                <li class="sidenav-item">
+                    <a href="{{route('syncclassteachers.create')}}" class="sidenav-link">
+                        <div>Teachers Class</div>
+                    </a>
+                </li>
                 
             </ul>
         </li>
         <!--  Icons -->
-        {{--  <li class="sidenav-divider mb-1"></li>   feather icon-activity --}}
+        {{--  <li class="sidenav-divider mb-1"></li>   feather icon-activity  --}}
         
     </ul>
 </div>

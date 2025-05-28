@@ -14,6 +14,7 @@ use App\Http\Controllers\NeoProfileController;
 use App\Http\Controllers\SyncNeoUserController;
 use App\Http\Controllers\TenantOrganizationController;
 use App\Http\Controllers\SyncNeoClassController;
+use App\Http\Controllers\SyncNeoClassTeacherController;
 
 
 
@@ -54,7 +55,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('neosync/syncorganizations', SyncNeoOrganizationController::class);
     Route::resource('neosync/syncusers', SyncNeoUserController::class);
-    Route::resource('neosync/syncclasses', SyncNeoClassController::class);
+    Route::resource('neosync/syncclasses', SyncNeoClassController::class);//
+    Route::resource('neosync/syncclassteachers', SyncNeoClassTeacherController::class);
     Route::get('neosync/organizations-by-tenant/{tenant}', [TenantOrganizationController::class, 'getOrganizations'])->name('organizations-by-tenant');
 });
 require __DIR__.'/auth.php';
