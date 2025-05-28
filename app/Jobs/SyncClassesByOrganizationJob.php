@@ -12,7 +12,6 @@ use App\Models\NeoTenant;
 use App\Models\NeoOrganization;
 use App\Models\NeoApi;
 use App\Models\NeoClass;
-
 use App\Models\User;
 use App\Notifications\SyncCompletedNotification;
 

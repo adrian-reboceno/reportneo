@@ -20,7 +20,8 @@ class TenantOrganizationController extends Controller
         ->get()
         ->groupBy('parent_id'); */
         $organizations = $tenant->organizations()
-        ->where('type', 'Operacion') // 🔍 Filtrar solo tipo operación
+        ->where('type', 'Operacion') 
+       // ->whereIn('type', ['Operacion','Capacitacion']) // 🔍 Filtrar solo tipo operación
         ->with('parent')
         ->orderBy('parent_id')
         ->orderBy('name_organization')
