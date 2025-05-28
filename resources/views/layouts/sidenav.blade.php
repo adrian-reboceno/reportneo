@@ -113,7 +113,11 @@
                         <div>Teachers Class</div>
                     </a>
                 </li>
-                
+                <li class="sidenav-item">
+                    <a href="{{route('syncclassattendances.create')}}" class="sidenav-link">
+                        <div>Attendance sessions class</div>
+                    </a>
+                </li>
             </ul>
         </li>
         <!--  Icons -->
