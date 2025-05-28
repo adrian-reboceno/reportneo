@@ -87,4 +87,16 @@ class NeoApiV3
     {
         return $this->get("organizations/{$id}/classes", $constraints);
     }
+    public function get_class_by_id(int $id, array $constraints)
+    {
+        return $this->get("classes/{$id}", $constraints);
+    }
+    public function get_class_attendance_sessions(int $id, array $constraints)
+    {
+        return $this->get("classes/{$id}/attendance_sessions", $constraints);
+    }
+    public function get_class_teachers(int $id, array $constraints)
+    {
+        return $this->get("classes/{$id}/teachers", $constraints);
+    }
 }
