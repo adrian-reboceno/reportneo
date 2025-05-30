@@ -115,7 +115,12 @@
                 </li>
                 <li class="sidenav-item">
                     <a href="{{route('syncclassattendances.create')}}" class="sidenav-link">
-                        <div>Attendance sessions class</div>
+                        <div>Attendance class</div>
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a href="{{route('syncattendancesessions.create')}}" class="sidenav-link">
+                        <div>Attendance sessions</div>
                     </a>
                 </li>
             </ul>

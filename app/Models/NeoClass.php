@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class NeoClass extends Model
 {
@@ -26,4 +30,16 @@ class NeoClass extends Model
         'time_zone',
         'section_code'
     ];
+    public function attendanceSessions()
+    {
+        return $this->hasMany(NeoClassAttendanceSession::class);
+    }
+    public function organization()
+    {
+        return $this->belongsTo(NeoOrganization::class, 'neo_organization_id');
+    }
+    public function teachers()
+    {
+        return $this->hasMany(NeoClassTeacher::class);
+    }
 }

@@ -44,4 +44,12 @@ class NeoPerson extends Model
     {
         return $this->hasMany(NeoPersonOrganization::class);
     }
+    public function neoPersonClass()
+    {
+        return $this->hasMany(NeoPersonClass::class);
+    }
+    public function neoPersonClassTeacher()
+    {
+        return $this->hasMany(NeoClassTeacher::class);
+    }
 }

@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class NeoClassTeacher extends Model
 {
@@ -20,6 +23,10 @@ class NeoClassTeacher extends Model
     }
     public function neoPerson()
     {
-        return $this->belongsTo(NeoPerson::class, 'person_id');
+         return $this->belongsTo(NeoPerson::class,'neo_person_id'); // Usa el nombre real del modelo
     }   
+   /*  public function person()
+    {
+        return $this->belongsTo(NeoPerson::class);
+    } */
 }

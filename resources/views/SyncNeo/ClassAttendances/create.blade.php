@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', 'Neo Class Teachers sync create')
-@section('title-active', 'Cypherlearning Neo Class Teachers sync')
+@section('title', 'Neo Class Attendances sync create')
+@section('title-active', 'Cypherlearning Class Attendances sync')
 
 @section('css-after')
 
