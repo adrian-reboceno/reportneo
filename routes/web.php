@@ -17,6 +17,8 @@ use App\Http\Controllers\SyncNeoClassController;
 use App\Http\Controllers\SyncNeoClassTeacherController;
 use App\Http\Controllers\SyncNeoClassAttendanceController;
 use App\Http\Controllers\SyncNeoClassAttendanceUserController;
+use App\Http\Controllers\SyncNeoClassStudentController; //
+use App\Http\Controllers\AttendanceExportController;
 
 
 
@@ -60,9 +62,18 @@ Route::middleware('auth')->group(function () {
     Route::resource('neosync/syncclasses', SyncNeoClassController::class);//
     Route::resource('neosync/syncclassteachers', SyncNeoClassTeacherController::class);
     Route::resource('neosync/syncclassattendances', SyncNeoClassAttendanceController::class);
-    Route::resource('neosync/syncattendancesessions', SyncNeoClassAttendanceUserController::class);    
-    Route::get('neosync/organizations-by-tenant/{tenant}', [TenantOrganizationController::class, 'getOrganizations'])->name('organizations-by-tenant');
+    Route::resource('neosync/syncclassstudents', SyncNeoClassStudentController::class);//
+    Route::resource('neosync/syncattendancesessions', SyncNeoClassAttendanceUserController::class);       
 });
+Route::middleware('auth')->group(function () {
+    Route::get('report/attendanceusers/export', [AttendanceExportController::class, 'showForm'])->name('attendanceusers.report');
+    Route::post('report/attendanceusers/export', [AttendanceExportController::class, 'export'])->name('attendanceusers.export');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('neosync/organizations-by-tenant/{tenant}', [TenantOrganizationController::class, 'getOrganizations'])->name('organizations-by-tenant');
+    Route::get('report/organizationsattendance/{tenant}', [TenantOrganizationController::class, 'getOrganizationsByAttendance'])->name('organizationsattendance');
+});
+
 require __DIR__.'/auth.php';
 
 Auth::routes();

@@ -85,6 +85,28 @@
                         <div>Neo organizations</div>
                     </a>
                 </li>
+                <li class="sidenav-item">
+                    <a href="javascript:" class="sidenav-link sidenav-toggle">
+                        <div>Report</div>
+                    </a>
+                    <ul class="sidenav-menu">
+                        <li class="sidenav-item">
+                            <a href="{{route('attendanceusers.report')}}" class="sidenav-link">
+                                <div>Attendance Users</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="pages_authentication_login-v2.html" class="sidenav-link">
+                                <div>Sesions</div>
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="pages_authentication_login-v3.html" class="sidenav-link">
+                                <div>Classes completed</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li class="sidenav-item">
@@ -111,6 +133,11 @@
                 <li class="sidenav-item">
                     <a href="{{route('syncclassteachers.create')}}" class="sidenav-link">
                         <div>Teachers Class</div>
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a href="{{route('syncclassstudents.create')}}" class="sidenav-link">
+                        <div>Students Class</div>
                     </a>
                 </li>
                 <li class="sidenav-item">
