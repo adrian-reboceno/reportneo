@@ -36,6 +36,10 @@ class NeoOrganization extends Model
     {
         return $this->hasMany(NeoOrganization::class, 'parent_id');
     }
+    public function classes()
+    {
+        return $this->hasMany(NeoClass::class);
+    }
     
 
     /**

@@ -29,4 +29,19 @@ class TenantOrganizationController extends Controller
         ->groupBy('parent_id');
         return response()->json($organizations);
     }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function getOrganizationsByAttendance(NeoTenant $tenant)
+    {       
+        $organizations = $tenant->organizations()
+        ->whereIn('type', ['Operacion', 'Capacitacion'])
+        ->whereHas('classes.attendanceSessions') // ✅ Solo organizaciones con clases con sesiones
+        ->with(['parent'])
+        ->orderBy('parent_id')
+        ->orderBy('name_organization')
+        ->get()
+        ->groupBy('parent_id');
+        return response()->json($organizations);
+    }
 }

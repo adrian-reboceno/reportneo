@@ -42,4 +42,8 @@ class NeoClass extends Model
     {
         return $this->hasMany(NeoClassTeacher::class);
     }
+    public function students()
+    {
+        return $this->hasMany(NeoClassStudent::class);
+    }
 }
